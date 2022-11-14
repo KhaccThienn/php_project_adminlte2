@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form method="POST" action="index.php?page=category/update.php">
+      <form method="POST" action="index.php?page=category/update.php&id=<?= $id?>">
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Category's Name</label>

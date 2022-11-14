@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
 
           <div class="form-group">
             <label for="image">Product's Image</label>
-            <input type="file" name="image" class="form-control" id="image"">
+            <input type="file" name="image" class="form-control" id="image">
           </div>
 
           <div class=" form-group">
@@ -145,7 +145,7 @@ if (isset($_POST['submit'])) {
         <!-- /.box-body -->
 
         <div class="box-footer">
-          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
       </form>
     </div>

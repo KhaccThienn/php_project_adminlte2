@@ -20,14 +20,12 @@
 
 <body class="hold-transition skin-blue sidebar-mini">
     <!-- Site wrapper -->
+    <?php include 'layouts/header.php'; ?>
+    <?php include 'layouts/sidebar.php'; ?>
     <div class="wrapper">
-
-        <?php include 'layouts/header.php'; ?>
-
         <!-- =============================================== -->
 
         <!-- Left side column. contains the sidebar -->
-        <?php include 'layouts/sidebar.php'; ?>
 
         <!-- =============================================== -->
 
@@ -36,19 +34,21 @@
             <!-- Content Header (Page header) -->
             <!-- Main content -->
             <section class="content">
-                <?php if (isset($_GET['page'])) {
-                    $page = $_GET['page'];
+                <?php if (isset($_GET['q']) || isset($_GET['category_search']) || isset($_GET['product_search'])) {
+                    $page = "search/index.php";
                 } else {
-                    $page = "dashboard/index.php";
+                    if (isset($_GET['page'])) {
+                        $page = $_GET['page'];
+                    } else {
+                        $page = "dashboard/index.php";
+                    }
                 } ?>
                 <?php include $page; ?>
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
         <?php include 'layouts/footer.php'; ?>
-
     </div>
     <!-- ./wrapper -->
 

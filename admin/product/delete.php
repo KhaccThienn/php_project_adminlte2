@@ -2,9 +2,15 @@
 include "connection/connect.php";
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 
-$sql = "DELETE FROM category WHERE id = $id";
+$sql = "SELECT * FROM product WHERE id = '$id'";
+$results = $connect->query($sql);
+$row = mysqli_fetch_assoc($results);
+
+unlink("uploads/".$row['image']);
+
+$sql = "DELETE FROM product WHERE id = $id";
 $result = $connect->query($sql);
 
 if ($result) {
-  echo "<script>window.open('index.php?page=category/index.php','_self')</script>";
+  echo "<script>window.open('index.php?page=product/index.php','_self')</script>";
 }
