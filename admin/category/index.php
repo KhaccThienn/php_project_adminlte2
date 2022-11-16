@@ -1,8 +1,18 @@
 <?php
 include "connection/connect.php";
 
+$limit = 6;
+$pages = !empty($_GET['pages']) ? $_GET['pages'] : 1;
+$start = ($pages - 1) * $limit;
 $sql = "SELECT * FROM category";
-$result = $connect->query($sql);
+
+$queryRow =  mysqli_query($connect, $sql);
+$count = mysqli_num_rows($queryRow);
+
+$totalPage = ceil($count / $limit);
+$sql .= " LIMIT $start, $limit";
+$result = mysqli_query($connect, $sql);
+
 ?>
 <section class="content-header">
   <h1>
@@ -73,6 +83,20 @@ $result = $connect->query($sql);
 
           </tbody>
         </table>
+      </div>
+      <div class="pagi text-right">
+
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+            <li <?= $i == $page ? 'class="active"' : ''; ?>>
+              <a href="?page=category/index.php&pages=<?= $i; ?>"><?= $i; ?></a>
+            </li>
+          <?php endfor; ?>
+
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+
       </div>
       <!-- /.box-body -->
     </div>

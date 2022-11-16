@@ -10,5 +10,6 @@ $sql = "DELETE FROM category WHERE id = $id";
 $result = $connect->query($sql);
 
 if ($result) {
-  echo "<script>window.open('index.php?page=category/index.php','_self')</script>";
+  header('location: ?page=category/index.php');
+  exit;
 }

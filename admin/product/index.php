@@ -1,9 +1,19 @@
 <?php
 include "connection/connect.php";
 
-$sql = "SELECT p.id, p.name, p.price, p.sale_price, p.image, c.name AS 'Name', p.status
-FROM product p INNER JOIN category c ON p.category_id = c.id";
-$result = $connect->query($sql);
+$limit = 3;
+$pages = !empty($_GET['pages']) ? $_GET['pages'] : 1;
+$start = ($pages - 1) * $limit;
+$sql = "SELECT p.id, p.name, p.price, p.sale_price, p.image, c.name AS 'Name', p.status FROM product p INNER JOIN category c ON p.category_id = c.id";
+
+$queryRow =  mysqli_query($connect, $sql);
+$count = mysqli_num_rows($queryRow);
+
+$totalPage = ceil($count / $limit);
+$sql .= " LIMIT $start, $limit";
+$result = mysqli_query($connect, $sql);
+
+
 ?>
 <section class="content-header">
   <h1>
@@ -85,7 +95,22 @@ $result = $connect->query($sql);
         </tbody>
       </table>
     </div>
-    <!-- /.box-body -->
+    <div class="pagi text-right">
+
+      <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+          <li <?= $i == $page ? 'class="active"' : ''; ?>>
+            <a href="?page=product/index.php&pages=<?= $i; ?>"><?= $i; ?></a>
+          </li>
+        <?php endfor; ?>
+
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+
+    </div>
+  </div>
+  <!-- /.box-body -->
   </div>
   <!-- /.box -->
 </section>

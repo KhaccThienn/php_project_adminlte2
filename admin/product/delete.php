@@ -12,5 +12,6 @@ $sql = "DELETE FROM product WHERE id = $id";
 $result = $connect->query($sql);
 
 if ($result) {
-  echo "<script>window.open('index.php?page=product/index.php','_self')</script>";
+  header('location: ?page=product/index.php');
+  exit;
 }

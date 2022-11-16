@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 include "connection/connect.php";
 
 $errors = [];
@@ -25,10 +27,12 @@ if (isset($_POST['submit'])) {
     $query = $connect->query($sql);
 
     if ($query) {
-      echo "<script>window.open('index.php?page=category/index.php','_self')</script>";
+      header('location: ?page=category/index.php');
+      exit;
     }
   }
 }
+ob_end_flush();
 ?>
 
 <section class="content">
@@ -41,7 +45,7 @@ if (isset($_POST['submit'])) {
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form method="POST" action="index.php?page=category/add.php">
+      <form method="POST" action="">
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Category's Name</label>

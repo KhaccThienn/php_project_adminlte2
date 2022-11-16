@@ -32,7 +32,8 @@ if (isset($_POST['submit'])) {
     $query = $connect->query($sql);
 
     if ($query) {
-      echo "<script>window.open('index.php?page=category/index.php','_self')</script>";
+      header('location: ?page=category/index.php');
+      exit;
     }
   }
 }
@@ -44,11 +45,11 @@ if (isset($_POST['submit'])) {
     <!-- general form elements -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Add New Category</h3>
+        <h3 class="box-title">Update Category: <?= $row['name'] ?></h3>
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form method="POST" action="index.php?page=category/update.php&id=<?= $id?>">
+      <form method="POST" action="">
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Category's Name</label>

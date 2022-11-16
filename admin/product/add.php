@@ -65,7 +65,8 @@ if (isset($_POST['submit'])) {
     $query = $connect->query($sql);
 
     if ($query) {
-      echo "<script>window.open('index.php?page=product/index.php','_self')</script>";
+      header('location: ?page=product/index.php');
+      exit;
     }
   }
 }
@@ -82,7 +83,7 @@ if (isset($_POST['submit'])) {
       <!-- /.box-header -->
       <!-- form start -->
 
-      <form method="POST" action="index.php?page=product/add.php" enctype="multipart/form-data">
+      <form method="POST" action="" enctype="multipart/form-data">
         <div class="box-body">
           <?php if ($errors) { ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
