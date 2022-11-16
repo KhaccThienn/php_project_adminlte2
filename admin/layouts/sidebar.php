@@ -1,3 +1,7 @@
+<?php
+$admin = $_SESSION['admin_login'];
+?>
+
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -7,8 +11,12 @@
                 <img src="assets/images/avatar.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>KhaccThienn</p>
-                <a href="#"><i class="fa fa-circle text-danger"></i> Offline</a>
+                <p><?= $admin['name'] ?></p>
+                <?php if ($admin['status'] == 1) { ?>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <?php } else { ?>
+                    <a href="#"><i class="fa fa-circle text-danger"></i> Offline</a>
+                <?php } ?>
             </div>
         </div>
         <!-- search form -->

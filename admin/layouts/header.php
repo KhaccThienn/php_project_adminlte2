@@ -1,3 +1,7 @@
+<?php
+$admin = $_SESSION['admin_login'];
+
+?>
 <div class="main-header">
     <!-- Logo -->
     <a href="index.php" class="logo">
@@ -106,7 +110,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="assets/images/avatar.png" class="user-image" alt="User Image">
-                        <span class="hidden-xs">KhaccThienn</span>
+                        <span class="hidden-xs"><?= $admin['name'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -114,7 +118,7 @@
                             <img src="assets/images/avatar.png" class="img-circle" alt="User Image">
 
                             <p>
-                                KhaccThienn - Web Developer
+                                <?= $admin['name'] ?> - Web Developer
                                 <small>Member since Oct. 2022</small>
                             </p>
                         </li>
@@ -139,7 +143,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

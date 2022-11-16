@@ -1,4 +1,12 @@
-<?php ob_start()?>
+<?php 
+ob_start();
+session_start();
+
+if (isset($_SESSION['admin_login'])) {
+    $admin = $_SESSION['admin_login'];
+} else {
+    header('location: login.php');
+}?>
 
 <!DOCTYPE html>
 <html>
